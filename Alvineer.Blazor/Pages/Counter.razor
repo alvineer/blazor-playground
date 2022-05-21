@@ -1,0 +1,25 @@
+﻿@page "/counter"
+
+<PageTitle>Counter</PageTitle>
+<MudText Typo="Typo.h3" GutterBottom="true">Counter</MudText>
+<ErrorBoundary @ref=errorBoundary>
+    <ChildContent>        
+        <NumberComponent Number="currentCount" />        
+    </ChildContent>
+    <ErrorContent Context="ex">
+        <p class="my-error">@ex.Message</p>
+    </ErrorContent>
+</ErrorBoundary>
+
+<MudButton Color="Color.Primary" Variant="Variant.Filled" @onclick="IncrementCount">Click me</MudButton>
+
+@code {
+    ErrorBoundary errorBoundary = null!;
+    private int currentCount = 0;
+
+    private void IncrementCount()
+    {
+        errorBoundary?.Recover();
+        currentCount++;
+    }
+}

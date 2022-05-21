@@ -1,0 +1,14 @@
+﻿<p role="status">Current count: @Number</p>
+
+@code {
+    [Parameter]
+    public int Number { get; set; } = 0;
+
+    protected async override Task OnParametersSetAsync()
+    {
+        if (Number > 4)
+            throw new Exception($"Number {Number} is greater than 4");
+
+        await base.OnParametersSetAsync();
+    }
+}

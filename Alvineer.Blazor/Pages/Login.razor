@@ -1,0 +1,15 @@
+﻿@page "/login"
+
+<MudSlider @bind-Value="spacing" Min="0" Max="10" Color="Color.Info" Class="mb-6">Spacing: @spacing.ToString()</MudSlider>
+
+<MudGrid Justify="Justify.Center">
+    <MudItem>
+        <MudPaper Height="240px"  Width="@($"{spacing * 10}px")"/>
+    </MudItem>
+    <MudItem>
+        <MudPaper Height="240px"  Width="@($"{spacing * 10}px")" />
+    </MudItem>
+</MudGrid>
+@code {
+    public int spacing { get; set; } = 2;
+}
